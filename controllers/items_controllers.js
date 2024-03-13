@@ -6,6 +6,7 @@ const Item = require("../schemas/item_schema");
 //Route       /
 exports.createNewItem = async (req, res) => {
   const { item_name, price, brand, quantity, sizes, item_type } = req.body;
+
   try {
     //create new data
     const newItem = await new Item({
@@ -28,6 +29,7 @@ exports.createNewItem = async (req, res) => {
 //Access    open
 //Route       /
 exports.getAllItems = async (req, res) => {
+  console.log(req.cookies);
   try {
     const items = await Item.find();
     res.send({ message: "Successfull", items });
